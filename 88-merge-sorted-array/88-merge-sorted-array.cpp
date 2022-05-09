@@ -10,7 +10,7 @@ public:
         int k = m+n-1;      // pointer for merged array
         
         while(i>=0 and j>=0){
-            if(nums1[i] > nums2[j]){            // SUnce we are adding from the back, so greater element will be at the end
+            if(nums1[i] > nums2[j]){            // Since we are adding from the back, so greater element will be at the end
                 nums1[k--] = nums1[i--];
             }
             else{
