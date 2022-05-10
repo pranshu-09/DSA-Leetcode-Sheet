@@ -1,3 +1,6 @@
+// TC : O(N^2)
+// SC : O(1)
+
 class Solution {
 public:
     int threeSumClosest(vector<int>& nums, int target) {
@@ -9,7 +12,7 @@ public:
         int min_dif = INT_MAX;
         int ans = 0;
         
-        for(int i=0;i<n;i++){
+        for(int i=0;i<n-2;i++){
             
             int j=i+1, k=n-1;
             
@@ -17,6 +20,11 @@ public:
                 
                 int sum = nums[i] + nums[j] + nums[k];
                 int dif = abs(target - sum);
+                
+                // The exact sum will be the closest to target (they are equal). Hence, no need to check further. Directly return sum.
+                if(sum == target){
+                    return sum;
+                }
                 
                 if(dif < min_dif){
                     min_dif = dif;
