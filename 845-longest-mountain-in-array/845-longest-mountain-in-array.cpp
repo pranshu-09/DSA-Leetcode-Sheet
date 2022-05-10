@@ -1,3 +1,6 @@
+// TC : O(N)
+// SC : O(1)
+
 class Solution {
 public:
     int longestMountain(vector<int>& arr) {
@@ -8,7 +11,7 @@ public:
             
             if(arr[i]>arr[i-1] and arr[i]>arr[i+1]){
                 
-                int len = 1;
+                int len = 0;
                 int idx = i;
                 
                 // Left Traversal
@@ -16,6 +19,9 @@ public:
                     len++;
                     idx--;
                 }
+                
+                // Add current element (peak) in the length
+                len++;
                 
                 // Right Traversal
                 idx = i;
