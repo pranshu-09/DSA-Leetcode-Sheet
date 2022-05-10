@@ -7,7 +7,7 @@ public:
             return true;
         }
         
-        if(i<0 or j<0 or i>=n or j>=m or vis[i][j]){
+        if(i<0 or j<0 or i>=n or j>=m or vis[i][j] or board[i][j]!=word[idx]){
             return false;
         }
         
