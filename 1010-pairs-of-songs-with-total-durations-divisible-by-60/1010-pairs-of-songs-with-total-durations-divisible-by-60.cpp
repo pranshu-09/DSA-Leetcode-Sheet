@@ -15,12 +15,13 @@ public:
         int pairs = 0;
         
         for(int i=0;i<n;i++){
-            if(time[i] == 0 and m.find(0)!=m.end()){
+            if(time[i] == 0){
                 pairs += m[0];
             }
-            else if(time[i]!=0 and m.find(60-time[i])!=m.end()){
+            else{
                 pairs += m[60-time[i]];
             }
+            
             m[time[i]]++;
         }
         
