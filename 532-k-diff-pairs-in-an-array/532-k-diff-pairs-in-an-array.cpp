@@ -1,6 +1,7 @@
 // TC : O(Nlog(N))
 // SC : O(1)
 
+// using 2 pointer technique
 class Solution {
 public:
     int findPairs(vector<int>& nums, int k) {
@@ -8,7 +9,7 @@ public:
         sort(nums.begin(), nums.end());
         
         int n = nums.size();
-        int i=0, j=1;
+        int i=0, j=1;   // initialise pointers
         
         int count = 0;
         
@@ -18,11 +19,12 @@ public:
                 j++;
             }
             else{
-                if(nums[j]-nums[i] == k){
+                if(nums[j]-nums[i] == k){   // if pair found, increment count
                     
                     count++;
-                    int val = nums[j];
                     
+                    // increment j till nums[j]==val
+                    int val = nums[j];
                     while(j<n and nums[j]==val){
                         j++;
                     }
@@ -32,6 +34,7 @@ public:
                     }
                 }
                 
+                // increment i till nums[i]==val
                 int val = nums[i];
                 while(i<j and nums[i]==val){
                     i++;
