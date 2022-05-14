@@ -3,7 +3,6 @@ public:
     int maximumWhiteTiles(vector<vector<int>>& tiles, int k) {
         
         // k => carpet length
-        
         sort(tiles.begin(), tiles.end());
         
         int n = tiles.size();
