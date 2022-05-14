@@ -1,21 +1,7 @@
+// Dijsktra's Algorithm
+
 class Solution {
 public:
-    
-    int find_time(unordered_map<int, vector<pair<int, int>>>&adj, int k, vector<bool>&vis){
-        
-        int max_time = 0;
-        
-        vis[k] = true;
-        
-        for(auto nbr : adj[k]){
-            if(!vis[nbr.first]){
-                int time = find_time(adj, nbr.first, vis) + nbr.second;
-                max_time = max(max_time, time);
-            }
-        }
-        
-        return max_time;
-    }
     
     int networkDelayTime(vector<vector<int>>& times, int n, int k) {
         
@@ -63,8 +49,6 @@ public:
             if(x.second == INT_MAX) return -1;
             max_time = max(max_time, x.second);
         }
-        
-        // if(max_time==0) return -1;
         
         return max_time;
     }
