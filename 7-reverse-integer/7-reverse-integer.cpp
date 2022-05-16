@@ -5,25 +5,17 @@ class Solution {
 public:
     int reverse(int x) {
         
-        long long int y = x;
-        long long int rev = 0;
+        int rev = 0;
         
-        bool neg = false;
-        if(y<0){
-            neg = true;
-            y = abs(y);
-        }
-        
-        while(y!=0){
-            int a = y%10;
+        while(x != 0){
+            int a = x%10;
+            
+            if(rev > (INT_MAX/10) or (rev==INT_MAX/10 and a>7)) return 0;
+            if(rev < (INT_MIN/10) or (rev==INT_MIN/10 and a<-8)) return 0;
+            
             rev = rev*10 + a;
-            y = y/10;
+            x /= 10;
         }
-        
-        if(neg) rev = -rev;
-        
-        if(rev<INT_MIN or rev>INT_MAX)
-            return 0;
         
         return rev;
     }
