@@ -1,3 +1,6 @@
+// TC : O(log(x))
+// SC : O(1)
+
 class Solution {
 public:
     int reverse(int x) {
