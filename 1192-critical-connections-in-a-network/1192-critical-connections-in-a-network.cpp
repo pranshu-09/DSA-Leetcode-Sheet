@@ -1,3 +1,8 @@
+// TC : O(V+E)
+// Tarjan's Algorithm to find bridges
+
+// Bridge => A bridge is an edge in the graph which when removed may lead to break the graph into more number of components
+
 class Solution {
 public:
     
@@ -35,9 +40,9 @@ public:
         
         vector<vector<int>>ans;
         
-        vector<int>low(n, -1);
-        vector<int>par(n, -1);
-        vector<int>disc(n, -1);
+        vector<int>low(n, -1);  // arr to store the lowest time 
+        vector<int>par(n, -1);  // arr to store the parent of current node
+        vector<int>disc(n, -1); // arr to store the discovery time of each node
         
         for(int i=0;i<n;i++){
             if(disc[i]==-1){
