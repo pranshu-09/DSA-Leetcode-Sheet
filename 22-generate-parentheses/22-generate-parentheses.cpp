@@ -1,3 +1,5 @@
+// TC : O(2^N)
+
 class Solution {
 public:
     
@@ -11,6 +13,7 @@ public:
         if(ob < n){
             generate(n, ans, curr+'(', ob+1, cb);
         }
+        
         if(ob > cb){
             generate(n, ans, curr+')', ob, cb+1);
         }
