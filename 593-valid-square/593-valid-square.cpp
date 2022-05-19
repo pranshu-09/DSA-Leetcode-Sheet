@@ -22,25 +22,9 @@ public:
             return false;
         }
         
-        int d1, cnt1;
-        int d2, cnt2;
+        // rbegin returns the last element of the map
+        if(dis.begin()->first==0 or dis.rbegin()->first==0) return false;
         
-        int p = -1;
-        
-        for(auto x : dis){
-            if(p == -1){
-                d1 = x.first;
-                cnt1 = x.second;
-                p = 1;
-            }
-            else{
-                d2 = x.first;
-                cnt2 = x.second;
-            }
-        }
-        
-        if(d1==0 or d2==0) return false;
-        
-        return cnt1==4 and cnt2==2;
+        return dis.begin()->second==4 and dis.rbegin()->second==2;
     }
 };
