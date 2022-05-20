@@ -1,7 +1,44 @@
+// 1D DP Solution
+// TC : O(N^2)
+// SC : O(N)
+
+class Solution {
+public:
+    
+    bool wordBreak(string sen, vector<string>& wordDict) {
+        
+        unordered_set<string>s;
+        int n = sen.size();
+        
+        for(auto x : wordDict){
+            s.insert(x);
+        }
+        
+        vector<bool>dp(n+1, false);
+        
+        dp[0] = true;
+        
+        for(int i=1;i<=n;i++){
+            for(int j=0;j<i;j++){
+                
+                string x = sen.substr(j, ((i-1)-j+1));
+                if(s.find(x) != s.end()){
+                    if(dp[j] == true){
+                        dp[i] = true;
+                        break;          // we are sure that for current value of i, it is possible to break the string into words. Hence, no need to check further for other j
+                    }
+                }
+            }
+        }
+        
+        return dp[n];
+    }
+};
+
 // Memoization
 // TC : O(N^2)
 // SC : O(N^2)
-
+/*
 class Solution {
 public:
     
@@ -48,6 +85,7 @@ public:
         return check_sen(sen, 0, 0);
     }
 };
+*/
 
 // Recursion Solution
 /*
