@@ -1,4 +1,38 @@
 // TC : O(N^2)
+// SC : O(1)
+class Solution {
+public:
+    
+    int countSubstrings(string str) {
+        
+        int n = str.size();
+        int ans = 0;
+        
+        for(int i=0;i<n;i++){
+            
+            // odd length
+            int s = i;
+            int e = i;
+            
+            while(s>=0 and e<n and str[s--]==str[e++]){
+                ans++;
+            }
+            
+            // even length
+            s = i-1;
+            e = i;
+            
+            while(s>=0 and e<n and str[s--]==str[e++]){
+                ans++;
+            }            
+        }
+        
+        return ans;
+    }
+};
+
+/*
+// TC : O(N^2)
 // SC : O(N^2)
 class Solution {
 public:
@@ -34,6 +68,7 @@ public:
         return ans;
     }
 };
+*/
 
 /*
 // Memoization
