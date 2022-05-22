@@ -1,4 +1,68 @@
 // TC : O(N^2)
+// SC : O(1)
+
+class Solution {
+public:
+    string longestPalindrome(string s) {
+        
+        int n = s.size();
+        
+        if(n==1){
+            return s;
+        }
+        
+        int max_len = 1;
+        int start = 0;      // store the start of the longest palindromic substring
+        
+        for(int k=0;k<n;k++){
+            
+            int i = k;
+            int j = k;
+            
+            while(i>=0 and j<n){
+                
+                if(s[i] != s[j]){
+                    break;
+                }
+                
+                int len = j - i + 1;
+                
+                if(len > max_len){
+                    max_len = len;
+                    start = i;
+                }
+                
+                i--;
+                j++;
+            }
+            
+            i = k-1;
+            j = k;
+            
+            while(i>=0 and j<n){
+                
+                if(s[i] != s[j]){
+                    break;
+                }
+                
+                int len = j - i + 1;
+                
+                if(len > max_len){
+                    max_len = len;
+                    start = i;
+                }
+                
+                i--;
+                j++;
+            }
+        }
+        
+        return s.substr(start, max_len);
+    }
+};
+
+/*
+// TC : O(N^2)
 // SC : O(N^2)
 
 class Solution {
@@ -50,3 +114,4 @@ public:
         return s.substr(start, max_len);        
     }
 };
+*/
