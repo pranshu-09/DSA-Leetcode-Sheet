@@ -37,8 +37,11 @@ public:
                 
                 if(s[i]==s[j] and dp[i+1][j-1]){
                     dp[i][j] = true;
-                    max_len = k;
-                    start=i;
+                    
+                    if(k > max_len){
+                        max_len = k;
+                        start=i;
+                    }
                 }   
             }
         }
