@@ -1,4 +1,40 @@
-// TC : O(SxMxN)
+// TC : O(SxMxN)  => S is the length of the string array strs
+// SC : O(MxN)
+class Solution {
+public:
+    
+    int find_cnt(string s, char ch){
+        int cnt = 0;
+        for(auto x : s){
+            if(ch == x) cnt++;
+        }
+        
+        return cnt;
+    }
+    
+    int findMaxForm(vector<string>& strs, int m, int n) {
+        
+        int dp[m+1][n+1];
+        memset(dp, 0, sizeof dp);
+        
+        for(auto s : strs){
+            
+            int one = find_cnt(s, '1');
+            int zero = find_cnt(s, '0');
+            
+            for(int i=m;i>=zero;i--){
+                for(int j=n;j>=one;j--){
+                    dp[i][j] = max(dp[i-zero][j-one]+1, dp[i][j]);
+                }
+            }
+        }
+        
+        return dp[m][n];
+    }
+};
+
+/* 
+// TC : O(SxMxN)  => S is the length of the string array strs
 // SC : O(SxMxN)
 
 class Solution {
@@ -46,6 +82,7 @@ public:
         return find_len(strs, 0, m, n);        
     }
 };
+*/
 
 // Recursion
 /*
