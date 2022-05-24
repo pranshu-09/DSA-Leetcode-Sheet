@@ -17,8 +17,8 @@ public:
     
     bool validPalindrome(string str) {
         
-        int s=0;
-        int e=str.size()-1;
+        int s = 0;
+        int e = str.size()-1;
         
         while(s<e){
             
