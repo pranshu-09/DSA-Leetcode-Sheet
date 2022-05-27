@@ -6,7 +6,7 @@ public:
     
     int n, m;
     
-    int find_max(vector<int>hist){
+    int find_max(vector<int>&hist){
         
         stack<int>s;
         int area=0, max_area=0;
