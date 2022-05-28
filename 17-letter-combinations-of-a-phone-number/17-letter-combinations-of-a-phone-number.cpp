@@ -1,7 +1,7 @@
 class Solution {
 public:
     
-    unordered_map<char, string>keypad;
+    vector<string>keypad{"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
     
     vector<string>ans;
     
@@ -12,7 +12,7 @@ public:
             return;
         }
         
-        for(auto x : keypad[s[i]]){
+        for(auto x : keypad[s[i]-'0']){
             find_comb(s, i+1, cur+x);
         }
     }
@@ -22,15 +22,8 @@ public:
         if(digits.size()==0){
             return {};
         }
+        
         ans.clear();
-        keypad['2'] = "abc";
-        keypad['3'] = "def";
-        keypad['4'] = "ghi";
-        keypad['5'] = "jkl";
-        keypad['6'] = "mno";
-        keypad['7'] = "pqrs";
-        keypad['8'] = "tuv";
-        keypad['9'] = "wxyz";
         
         find_comb(digits, 0, "");
         
