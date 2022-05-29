@@ -3,27 +3,28 @@
 class Solution {
 public:
     
-    void generate(int n, vector<string>&ans, string curr, int ob, int cb){
+    vector<string>ans;
+    
+    void generate(int n, int open, int close, string cur){
         
-        if(cb==n){
-            ans.push_back(curr);
+        if(close == n){
+            ans.push_back(cur);
             return;
         }
         
-        if(ob < n){
-            generate(n, ans, curr+'(', ob+1, cb);
+        if(open < n){
+            generate(n, open+1, close, cur+'(');
         }
         
-        if(ob > cb){
-            generate(n, ans, curr+')', ob, cb+1);
+        if(open > close){
+            generate(n, open, close+1, cur+')');
         }
     }
     
     vector<string> generateParenthesis(int n) {
         
-        vector<string>ans;
-        
-        generate(n, ans, "", 0, 0);
+        ans.clear();
+        generate(n, 0, 0, "");
         
         return ans;
     }
