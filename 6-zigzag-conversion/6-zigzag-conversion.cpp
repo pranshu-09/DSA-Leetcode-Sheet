@@ -1,5 +1,4 @@
 // TC : O(N)
-// SC : O(numRows)
 class Solution {
 public:
     string convert(string s, int numRows) {
