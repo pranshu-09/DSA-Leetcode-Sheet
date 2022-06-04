@@ -1,4 +1,4 @@
-// TC : O(logN)
+// TC : O(max(N,M))
 // SC : O(1)
 
 class Solution {
