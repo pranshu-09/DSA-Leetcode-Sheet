@@ -1,11 +1,8 @@
-bool compare(pair<int, string>&a, pair<int, string>&b){
-    return a.first < b.first;
-}
-
 class TimeMap {
-public:
     
     unordered_map<string, vector<pair<int, string>>>ds;
+    
+public:
     
     TimeMap() {
         
