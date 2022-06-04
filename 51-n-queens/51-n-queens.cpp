@@ -34,24 +34,20 @@ public:
         return true;
     }
     
-    bool find_pos(vector<string>&board, int row, int n){
+    void find_pos(vector<string>&board, int row, int n){
         
         if(row == n){
             ans.push_back(board);
-            return false;
+            return;
         }
         
         for(int col=0;col<n;col++){
             if(can_place(board, row, col, n)){
-                
                 board[row][col] = 'Q';
-                bool res_board = find_pos(board, row+1, n);
-                
+                find_pos(board, row+1, n);
                 board[row][col] = '.';
             }
-        }
-        
-        return false;
+        }    
     }
     
     vector<vector<string>> solveNQueens(int n) {
