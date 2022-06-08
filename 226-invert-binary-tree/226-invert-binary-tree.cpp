@@ -9,6 +9,7 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+// TC : O(N) => N : no of nodes in tree
 class Solution {
 public:
     TreeNode* invertTree(TreeNode*&root) {
