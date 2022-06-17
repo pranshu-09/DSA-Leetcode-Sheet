@@ -5,7 +5,7 @@ public:
     
     int networkDelayTime(vector<vector<int>>& times, int n, int k) {
         
-        unordered_map<int, vector<pair<int, int>>>adj;
+        unordered_map<int, list<pair<int, int>>>adj;
         unordered_map<int, int>dist;
         
         for(int i=1;i<=n;i++){
