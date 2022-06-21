@@ -29,21 +29,22 @@ public:
         while(!q.empty()){
             
             int k = q.size();
-            vector<int>temp;
+            vector<int>temp(k);
             
-            while(k--){
+            for(int i=0;i<k;i++){
                 
                 TreeNode*f = q.front();
                 q.pop();
                 
-                temp.push_back(f->val);
+                if(row&1){
+                    temp[k-1-i] = f->val;
+                }
+                else{
+                    temp[i] = f->val;   
+                }
                 
                 if(f->left) q.push(f->left);
                 if(f->right) q.push(f->right);
-            }
-            
-            if(row&1){
-                reverse(temp.begin(), temp.end());
             }
 
             ans.push_back(temp);
