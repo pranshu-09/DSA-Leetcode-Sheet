@@ -1,4 +1,4 @@
-// TC : O(N)
+// TC : O(NlogN)
 // SC : O(N)
 typedef pair<int, pair<int, int>> pp;
 
