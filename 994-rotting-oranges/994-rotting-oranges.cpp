@@ -1,9 +1,7 @@
-// TC : O(NxM)
-// SC : O(NxM)
 class Solution {
 public:
     
-    bool check(vector<vector<int>>& grid, int i, int j, int n, int m){
+    bool is_safe(vector<vector<int>>& grid, int i, int j, int n, int m){
         
         if(i<0 or i>=n or j<0 or j>=m or grid[i][j]!=1){
             return false;
@@ -14,10 +12,9 @@ public:
     
     int orangesRotting(vector<vector<int>>& grid) {
         
-        int n = grid.size();
-        int m = grid[0].size();
+        int n=grid.size(), m=grid[0].size();
+        int days=0, fresh=0;
         
-        int fresh = 0;        
         queue<pair<int, int>>q;
         
         for(int i=0;i<n;i++){
@@ -25,43 +22,43 @@ public:
                 if(grid[i][j] == 2){
                     q.push({i, j});
                 }
-                else if(grid[i][j]==1){
+                else if(grid[i][j] == 1){
                     fresh++;
                 }
             }
         }
         
-        int days = 0;
         int dxy[5] = {-1, 0, 1, 0, -1};
         
         while(!q.empty()){
             
-            int sz = q.size();
-            int r = 0;
+            int k = q.size();
+            bool check_first = true;
             
-            while(sz--){
+            while(k--){
                 
-                auto p = q.front();
+                auto f = q.front();
                 q.pop();
                 
-                int cx = p.first;
-                int cy = p.second;
+                int cx = f.first;
+                int cy = f.second;
                 
-                for(int i=0;i<4;i++){
+                for(int j=0; j<4; j++){
                     
-                    int x = cx + dxy[i];
-                    int y = cy + dxy[i+1];
+                    int x = cx + dxy[j];
+                    int y = cy + dxy[j+1];
                     
-                    if(check(grid, x, y, n, m)){
+                    if(is_safe(grid, x, y, n, m)){
+                        
                         grid[x][y] = 2;
                         q.push({x, y});
                         fresh--;
                         
-                        if(r==0){
+                        if(check_first){
                             days++;
-                            r++;
+                            check_first = false;
                         }
-                    } 
+                    }
                 }
             }
         }
@@ -69,7 +66,7 @@ public:
         if(fresh == 0){
             return days;
         }
-                       
+        
         return -1;
     }
 };
